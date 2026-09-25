@@ -1,0 +1,35 @@
+name: Backend Lint (ruff)
+
+on:
+  pull_request:
+    paths:
+      - "backend/**"
+  push:
+    branches:
+      - main
+    paths:
+      - "backend/**"
+
+jobs:
+  ruff:
+    name: Ruff check
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Install ruff
+        run: pip install "ruff>=0.8.0"
+
+      - name: Run ruff check
+        working-directory: backend
+        # --output-format=github formats errors as GitHub annotations (inline in PR diffs)
+        run: ruff check . --output-format=github
+        continue-on-error: true  # soft: reports but does not block the merge
+

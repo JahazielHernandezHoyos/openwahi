@@ -1,0 +1,110 @@
+[project]
+name = "openwahi-backend"
+version = "0.1.0"
+description = "OpenWahi backend: open-source support agents harness for WhatsApp"
+readme = "README.md"
+requires-python = ">=3.11"
+dependencies = [
+    "fastapi>=0.128.0",
+    "firebase-admin>=6.0.0",
+    "uvicorn[standard]>=0.32.1",
+    "python-dotenv>=1.0.0",
+    "pydantic>=2.10.4",
+    "pydantic[email]",
+    "pydantic-settings>=2.7.0",
+    "passlib[bcrypt]>=1.7.4",
+    "python-multipart>=0.0.20",
+    "sqlalchemy[asyncio]>=2.0.46",
+    "alembic>=1.18.1",
+    "asyncpg>=0.31.0",
+    "psycopg2-binary>=2.9.11",
+    "langchain-core>=0.3.0",
+    "langchain-groq>=0.2.0",
+    "langchain-community>=0.3.0",
+    "langgraph==1.0.10",
+    "langgraph-prebuilt==1.0.8",
+    "cryptography>=42.0.0",
+    # Knowledge Base / RAG dependencies
+    "pandas>=2.0.0",
+    "openpyxl>=3.1.0",
+    "pymupdf>=1.24.0",
+    "python-docx>=1.1.0",
+    "qdrant-client>=1.9.0",
+    "boto3>=1.34.0",
+    "tiktoken>=0.7.0",
+    "langchain-text-splitters>=0.3.0",
+    "aiofiles>=24.0.0",
+    "openai>=1.0.0",
+    "sentence-transformers>=5.0.0",
+    "torch==2.14.0",
+    # Monitoring
+    "sentry-sdk[fastapi]>=2.0.0",
+    # Rate limiting
+    "slowapi>=0.1.9",
+    # HTTP client (GOWA, transcriber, webhooks)
+    "httpx>=0.27.0",
+    "langchain-openai>=1.2.1",
+]
+
+[project.optional-dependencies]
+test = [
+    "pytest==9.0.3",
+    "pytest-asyncio>=0.24.0",
+    "pytest-cov>=6.0.0",
+    "pytest-timeout>=2.3.0",
+]
+
+lint = [
+    "ruff>=0.8.0",
+]
+
+# sentence-transformers depends on torch. Pin torch to the official CPU wheel
+# index on every platform so Linux production installs cannot pull CUDA/NVIDIA.
+[tool.uv.sources]
+torch = { index = "pytorch-cpu" }
+
+[[tool.uv.index]]
+name = "pytorch-cpu"
+url = "https://download.pytorch.org/whl/cpu"
+explicit = true
+
+# ── Ruff configuration ────────────────────────────────────────────────────────
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+# Exclude generated migrations and ad-hoc scripts from linting
+exclude = [
+    "alembic/versions/",
+    "verify_setup.py",
+]
+
+[tool.ruff.lint]
+# E = pycodestyle, F = pyflakes, I = isort, UP = pyupgrade
+select = ["E", "F", "I", "UP"]
+ignore = [
+    "E501",   # line too long — handled by formatter, not ruff check
+    "E711",   # comparison to None — valid with SQLAlchemy
+    "E712",   # comparison to True/False — valid with SQLAlchemy
+    "UP007",  # use X | Y for type hints — keep Optional for clarity
+    "UP006",  # use type instead of Type — same reason
+    "UP045",  # use X | None — keep Optional[X] for clarity
+    "UP035",  # deprecated typing imports — large existing codebase, migrate gradually
+    "UP042",  # use StrEnum — large existing codebase, migrate gradually
+    "F401",   # unused import — too many false positives in __init__ and re-exports
+]
+
+[tool.ruff.lint.isort]
+known-first-party = ["app"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+asyncio_mode = "auto"
+# Use a single event loop for ALL tests and fixtures so the session-scoped
+# engine and function-scoped tests share the same loop (fixes asyncpg errors).
+asyncio_default_fixture_loop_scope = "session"
+asyncio_default_test_loop_scope = "session"
+timeout = 30
+addopts = "-v --tb=short --strict-markers"
+markers = [
+    "slow: marks tests as slow (deselect with '-m \"not slow\"')",
+]

@@ -1,0 +1,35 @@
+# Virtual environment
+.venv/
+venv/
+env/
+
+# Python cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.pyo
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# Git
+.git/
+.gitignore
+
+# Tests
+tests/
+pytest.ini
+.pytest_cache/
+
+# Docs
+*.md
+docs/
+
+# Local env files (use docker-compose env_file instead)
+.env.local
+
+# Alembic versions (keep migrations but not local state)
+alembic/versions/__pycache__/
