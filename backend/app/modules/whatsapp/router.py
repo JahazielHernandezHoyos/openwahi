@@ -789,9 +789,6 @@ async def _process_webhook_request(
         logger.error(f"Error parsing webhook body: {e}")
         raise HTTPException(status_code=400, detail="Invalid JSON body")
 
-    # Log full payload for debugging
-    logger.info(f"Webhook payload: {payload}")
-
     # Extract webhook data
     # GOWA v8 sends: {"event": "message", "device_id": "phone@s.whatsapp.net", "payload": {...}}
     webhook_type = payload.get("event") or payload.get("type", "message")
@@ -816,9 +813,9 @@ async def _process_webhook_request(
     try:
         await service.process_webhook(db, webhook_type, device_id, data, instance_port, ws_manager)
         return {"status": "processed"}
-    except Exception as e:
-        logger.error(f"Error processing webhook: {e}")
-        return {"status": "error", "message": str(e)}
+    except Exception:
+        logger.exception("Error processing webhook")
+        return {"status": "error"}
 
 
 @router.post("/webhook/{instance_port}", status_code=200)

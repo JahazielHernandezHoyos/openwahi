@@ -3,6 +3,7 @@
 External services (GOWA) are mocked. Database operations are real.
 """
 
+import logging
 import uuid
 from unittest.mock import AsyncMock, MagicMock, patch
 
@@ -101,6 +102,38 @@ async def test_webhook_accepts_request(client):
     )
     # Should be processed (200) since no webhook secret is configured in tests
     assert resp.status_code == 200
+
+
+async def test_webhook_does_not_log_message_text(client, caplog):
+    """The webhook handler must not write customer message text to the logs."""
+    caplog.set_level(logging.INFO)
+    secret_text = "mensaje-privado-de-cliente-xyz"
+    with patch(
+        "app.modules.whatsapp.router.service.process_webhook",
+        new_callable=AsyncMock,
+    ):
+        resp = await client.post(
+            "/whatsapp/webhook",
+            json={"event": "message", "data": {"body": secret_text}},
+        )
+    assert resp.status_code == 200
+    assert secret_text not in caplog.text
+
+
+async def test_webhook_error_does_not_expose_exception(client):
+    """Internal errors are kept server-side; the response body stays generic."""
+    with patch(
+        "app.modules.whatsapp.router.service.process_webhook",
+        new_callable=AsyncMock,
+        side_effect=RuntimeError("db password xyz"),
+    ):
+        resp = await client.post(
+            "/whatsapp/webhook",
+            json={"event": "message", "data": {}},
+        )
+    assert resp.status_code == 200
+    assert resp.json() == {"status": "error"}
+    assert "db password xyz" not in resp.text
 
 
 # ---------------------------------------------------------------------------
