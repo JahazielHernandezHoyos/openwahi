@@ -40,8 +40,6 @@ class DeveloperService:
         Returns:
             Tuple of (full_token, token_hash, token_prefix)
         """
-        # Generate a 32-byte (256-bit) random token
-        secrets.token_bytes(32)
         full_token = f"whapi_{secrets.token_urlsafe(32)}"
 
         # Hash the token for storage
@@ -122,7 +120,7 @@ class DeveloperService:
         ]
 
     @staticmethod
-    async def revoke_token(db: AsyncSession, user_id: str, token_id: str) -> bool:
+    async def revoke_token(db: AsyncSession, user_id: str, token_id: UUID) -> bool:
         """
         Revoke (delete) an API token.
 
@@ -136,7 +134,7 @@ class DeveloperService:
         """
         result = await db.execute(
             select(ApiTokenDB).where(
-                ApiTokenDB.id == UUID(token_id),
+                ApiTokenDB.id == token_id,
                 ApiTokenDB.user_id == user_id,
             )
         )
