@@ -1,0 +1,8 @@
+{
+  "tests": [
+    "backend/tests/test_whatsapp.py"
+  ],
+  "before": 1,
+  "after": 0,
+  "suite": 0
+}

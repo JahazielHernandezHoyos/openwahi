@@ -1,0 +1,9 @@
+{"version":3,"term":{"cols":120,"rows":42},"timestamp":1790449004,"command":"orb-proof prepare orb/whatsapp-pii-logs"}
+[0.333, "o", "\u001b[1m━━━ 1 · Qué cambió el orb · orb/whatsapp-pii-logs ━━━\u001b[0m\r\n\r\n"]
+[0.002, "o", "  47dafa4 fix(whatsapp): stop logging webhook payload and leaking errors\r\n"]
+[0.000, "o", "\r\n"]
+[0.002, "o", "   backend/app/modules/whatsapp/router.py |  9 +++------\r\n   backend/tests/test_whatsapp.py         | 33 +++++++++++++++++++++++++++++++++\r\n   2 files changed, 36 insertions(+), 6 deletions(-)\r\n"]
+[0.000, "o", "\r\n"]
+[0.000, "o", "\u001b[1mTests que prueban el cambio:\u001b[0m\r\n"]
+[0.001, "o", "  backend/tests/test_whatsapp.py\r\n"]
+[0.000, "x", "0"]
