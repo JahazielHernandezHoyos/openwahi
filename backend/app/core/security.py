@@ -38,18 +38,18 @@ async def decode_firebase_token(token: str) -> Dict[str, Any]:
             detail="Token has expired",
             headers={"WWW-Authenticate": "Bearer"},
         )
-    except firebase_auth.InvalidIdTokenError as e:
-        logger.warning(f"Invalid Firebase token: {str(e)}")
-        raise HTTPException(
-            status_code=status.HTTP_401_UNAUTHORIZED,
-            detail=f"Invalid authentication credentials: {str(e)}",
-            headers={"WWW-Authenticate": "Bearer"},
-        )
     except firebase_auth.RevokedIdTokenError:
         logger.warning("Firebase token has been revoked")
         raise HTTPException(
             status_code=status.HTTP_401_UNAUTHORIZED,
             detail="Token has been revoked",
+            headers={"WWW-Authenticate": "Bearer"},
+        )
+    except firebase_auth.InvalidIdTokenError as e:
+        logger.warning(f"Invalid Firebase token: {str(e)}")
+        raise HTTPException(
+            status_code=status.HTTP_401_UNAUTHORIZED,
+            detail="Invalid authentication credentials",
             headers={"WWW-Authenticate": "Bearer"},
         )
     except Exception as e:
