@@ -1,0 +1,11 @@
+{"version":3,"term":{"cols":120,"rows":42},"timestamp":1790449025,"command":"orb-proof after"}
+[0.001, "o", "\u001b[1m━━━ 3 · DESPUÉS · rama del orb → los tests del orb deben PASAR ━━━\u001b[0m\r\n\r\n"]
+[0.028, "o", "\u001b[2mcódigo: 86e682c test(ai-assistant): assert temporary encryption key stays out of logs\u001b[0m\r\n\u001b[2mtests:  los del orb\u001b[0m\r\n\u001b[2m$ cd backend && uv sync -q --extra test && uv run pytest tests/test_encryption.py  -v -p no:warnings -p no:cacheprovider --no-header --tb=line\u001b[0m\r\n\r\n"]
+[0.675, "o", "\u001b[1m================================================= test session starts ==================================================\u001b[0m\r\n\u001b[1mcollecting ... \u001b[0m"]
+[1.512, "o", "\u001b[1m\rcollecting 1 item                                                                                                      \u001b[0m\u001b[1m\rcollected 1 item                                                                                                       \u001b[0m\r\n"]
+[0.000, "o", "\r\ntests/test_encryption.py::test_missing_key_warns_without_leaking_it "]
+[1.574, "o", "\u001b[32mPASSED\u001b[0m\u001b[32m                                       [100%]\u001b[0m"]
+[0.041, "o", "\r\n"]
+[0.000, "o", "\r\n\u001b[32m================================================== \u001b[32m\u001b[1m1 passed\u001b[0m\u001b[32m in 3.13s\u001b[0m\u001b[32m ===================================================\u001b[0m\r\n"]
+[2.335, "o", "\r\n\u001b[32m\u001b[1m✔ PASAN (exit 0)\u001b[0m\r\n"]
+[0.001, "x", "0"]

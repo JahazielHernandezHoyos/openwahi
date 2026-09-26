@@ -1,0 +1,9 @@
+{"version":3,"term":{"cols":120,"rows":42},"timestamp":1790449004,"command":"orb-proof prepare orb/encryption-key-log"}
+[0.346, "o", "\u001b[1m━━━ 1 · Qué cambió el orb · orb/encryption-key-log ━━━\u001b[0m\r\n\r\n"]
+[0.001, "o", "  86e682c test(ai-assistant): assert temporary encryption key stays out of logs\r\n  3d14a92 fix(ai-assistant): stop logging generated encryption key\r\n"]
+[0.000, "o", "\r\n"]
+[0.001, "o", "   backend/app/modules/ai_assistant/encryption.py | 10 +++---\r\n   backend/tests/test_encryption.py               | 46 ++++++++++++++++++++++++++\r\n   2 files changed, 50 insertions(+), 6 deletions(-)\r\n"]
+[0.000, "o", "\r\n"]
+[0.001, "o", "\u001b[1mTests que prueban el cambio:\u001b[0m\r\n"]
+[0.000, "o", "  backend/tests/test_encryption.py\r\n"]
+[0.001, "x", "0"]
