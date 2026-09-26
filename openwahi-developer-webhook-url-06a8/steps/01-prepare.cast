@@ -1,0 +1,9 @@
+{"version":3,"term":{"cols":120,"rows":42},"timestamp":1790449952,"command":"orb-proof prepare orb/developer-webhook-url"}
+[0.285, "o", "\u001b[1m━━━ 1 · Qué cambió el orb · orb/developer-webhook-url ━━━\u001b[0m\r\n\r\n"]
+[0.002, "o", "  aa7328b fix(developer): validate outbound webhook URL scheme\r\n"]
+[0.000, "o", "\r\n"]
+[0.001, "o", "   backend/app/modules/developer/models.py            | 12 ++++++++++-\r\n   .../test_developer_webhook_config_validation.py    | 23 ++++++++++++++++++++++\r\n   2 files changed, 34 insertions(+), 1 deletion(-)\r\n"]
+[0.000, "o", "\r\n"]
+[0.000, "o", "\u001b[1mTests que prueban el cambio:\u001b[0m\r\n"]
+[0.001, "o", "  backend/tests/test_developer_webhook_config_validation.py\r\n"]
+[0.000, "x", "0"]
