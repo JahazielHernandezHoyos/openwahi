@@ -1,0 +1,11 @@
+{
+  "mode": "check",
+  "check": "cd backend && uv sync -q --extra lint && uv run ruff check .",
+  "tests": [
+    "backend/tests/test_response_naturalizer.py",
+    "backend/tests/test_usage_tracker.py"
+  ],
+  "before": 1,
+  "after": 0,
+  "suite": 0
+}

@@ -1,0 +1,8 @@
+{"version":3,"term":{"cols":120,"rows":42},"timestamp":1790450885,"command":"orb-proof prepare orb/ruff-cleanup"}
+[0.044, "o", "\u001b[1m━━━ 1 · Qué cambió el orb · orb/ruff-cleanup ━━━\u001b[0m\r\n\r\n"]
+[0.001, "o", "  61fbdd9 refactor(ai-assistant): use datetime.UTC alias (UP017)\r\n  8f6e125 style(backend): sort import blocks flagged by ruff (I001)\r\n"]
+[0.000, "o", "\r\n"]
+[0.002, "o", "   backend/alembic/env.py                                   | 2 +-\r\n   backend/app/main.py                                      | 2 +-\r\n   backend/app/modules/ai_assistant/response_naturalizer.py | 2 +-\r\n   backend/app/modules/ai_assistant/service.py              | 1 +\r\n   backend/app/modules/ai_assistant/usage_tracker.py        | 4 ++--\r\n   backend/app/modules/subscriptions/models.py              | 3 ++-\r\n   backend/app/modules/widget/models.py                     | 1 -\r\n   backend/tests/test_response_naturalizer.py               | 4 ++--\r\n   backend/tests/test_usage_tracker.py                      | 4 ++--\r\n   9 files changed, 12 insertions(+), 11 deletions(-)\r\n"]
+[0.000, "o", "\r\n"]
+[0.000, "o", "\u001b[1mComprobación que prueba el cambio:\u001b[0m\r\n  cd backend && uv sync -q --extra lint && uv run ruff check .\r\n"]
+[0.001, "x", "0"]
