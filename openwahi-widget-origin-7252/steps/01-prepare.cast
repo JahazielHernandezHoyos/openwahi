@@ -1,0 +1,9 @@
+{"version":3,"term":{"cols":120,"rows":42},"timestamp":1790448950,"command":"orb-proof prepare orb/widget-origin"}
+[0.200, "o", "\u001b[1m━━━ 1 · Qué cambió el orb · orb/widget-origin ━━━\u001b[0m\r\n\r\n"]
+[0.001, "o", "  41c76c7 test(widget): cover origin validation for widget tokens\r\n  2c691f1 fix(widget): require allowed origin when Origin header is missing\r\n"]
+[0.000, "o", "\r\n"]
+[0.001, "o", "   backend/app/modules/widget/service.py |  15 ++-\r\n   backend/tests/test_widget.py          | 169 ++++++++++++++++++++++++++++++++++\r\n   2 files changed, 181 insertions(+), 3 deletions(-)\r\n"]
+[0.000, "o", "\r\n"]
+[0.000, "o", "\u001b[1mTests que prueban el cambio:\u001b[0m\r\n"]
+[0.001, "o", "  backend/tests/test_widget.py\r\n"]
+[0.000, "x", "0"]

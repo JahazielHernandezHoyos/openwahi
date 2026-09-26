@@ -1,0 +1,6 @@
+{"version":3,"term":{"cols":120,"rows":42},"timestamp":1790448985,"command":"orb-proof verdict"}
+[0.002, "o", "\u001b[1m━━━ 5 · Veredicto ━━━\u001b[0m\r\n\r\n"]
+[0.002, "o", "  tests del orb en main (sin el cambio)        \u001b[32mfallan ✔\u001b[0m\r\n"]
+[0.001, "o", "  tests del orb en la rama                     \u001b[32mpasan ✔\u001b[0m\r\n"]
+[0.000, "o", "  suite completa + lint en la rama             \u001b[32mOK ✔\u001b[0m\r\n\r\n\u001b[32m\u001b[1mDEMOSTRADO: el problema existe sin el cambio, desaparece con él y no se rompe nada más.\u001b[0m\r\n"]
+[0.002, "x", "0"]
