@@ -4,6 +4,7 @@ Knowledge Base API Router - Endpoints for managing knowledge bases and RAG.
 
 import logging
 from typing import List, Optional
+from urllib.parse import quote
 from uuid import UUID
 
 from fastapi import APIRouter, Depends, File, HTTPException, Query, UploadFile, status
@@ -29,6 +30,24 @@ from .service import KnowledgeBaseService
 logger = logging.getLogger(__name__)
 
 router = APIRouter(prefix="/knowledge-base", tags=["Knowledge Base"])
+
+
+def _content_disposition(filename: str) -> str:
+    """Build an RFC 6266/5987 ``Content-Disposition`` header value.
+
+    Ships an ASCII-only ``filename`` fallback (with quotes and backslashes
+    escaped) plus a percent-encoded UTF-8 ``filename*`` so non-ASCII names
+    (CJK, emoji, quotes, ...) survive without breaking header encoding.
+    """
+    ascii_filename = filename.encode("ascii", "ignore").decode("ascii")
+    ascii_filename = ascii_filename.replace("\\", "\\\\").replace('"', '\\"')
+    if not ascii_filename:
+        ascii_filename = "download"
+    encoded_filename = quote(filename, safe="")
+    return (
+        f'attachment; filename="{ascii_filename}"; '
+        f"filename*=UTF-8''{encoded_filename}"
+    )
 
 
 # ==================== Knowledge Base Management ====================
@@ -426,14 +445,14 @@ async def download_document(
             content=file_content,
             media_type=content_type,
             headers={
-                "Content-Disposition": f'attachment; filename="{doc.filename}"'
+                "Content-Disposition": _content_disposition(doc.filename),
             },
         )
-    except Exception as e:
-        logger.error(f"Failed to download document {doc_id}: {e}")
+    except Exception:
+        logger.exception("Failed to download document %s", doc_id)
         raise HTTPException(
             status_code=status.HTTP_500_INTERNAL_SERVER_ERROR,
-            detail=f"Failed to download document: {str(e)}",
+            detail="Failed to download document",
         )
 
 
