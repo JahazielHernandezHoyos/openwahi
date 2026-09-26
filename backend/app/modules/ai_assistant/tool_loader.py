@@ -9,9 +9,29 @@ from uuid import UUID
 from sqlalchemy import text
 from sqlalchemy.ext.asyncio import AsyncSession
 
+from .encryption import decrypt_api_key
 from .webhook_tools import DynamicWebhookTool, WebhookToolConfig
 
 logger = logging.getLogger(__name__)
+
+
+def _decrypt_auth_value(stored_value: str | None) -> str | None:
+    """Decrypt a stored webhook auth value.
+
+    Rows created before encryption was added may still hold plaintext. If the
+    stored value is not a valid Fernet token, fall back to using it as-is so
+    legacy tools keep loading. The value itself is never logged.
+    """
+    if not stored_value:
+        return None
+    try:
+        return decrypt_api_key(stored_value)
+    except Exception:
+        logger.warning(
+            "Could not decrypt webhook auth value; using the stored value as-is "
+            "(likely a legacy plaintext row)."
+        )
+        return stored_value
 
 
 class DynamicToolLoader:
@@ -69,7 +89,7 @@ class DynamicToolLoader:
                     headers=row.headers or {},
                     input_schema=row.input_schema,
                     auth_type=row.auth_type,
-                    auth_value=row.auth_value_encrypted,  # TODO: Decrypt
+                    auth_value=_decrypt_auth_value(row.auth_value_encrypted),
                     timeout_seconds=row.timeout_seconds,
                     max_retries=row.max_retries,
                     is_enabled=row.is_enabled,
