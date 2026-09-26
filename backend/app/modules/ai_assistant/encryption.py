@@ -25,17 +25,15 @@ class EncryptionService:
             encryption_key = os.getenv("AI_ENCRYPTION_KEY")
 
             if not encryption_key:
-                # Generate a new key if not set (for development only)
+                # Generate a new key if not set (for development only).
+                # Never log the generated key: it decrypts every stored secret.
                 logger.warning(
                     "AI_ENCRYPTION_KEY not set in environment. "
-                    "Generating a temporary key. "
+                    "Generating a temporary key; data encrypted with it is lost "
+                    "on restart. Set AI_ENCRYPTION_KEY in your .env file. "
                     "THIS IS NOT SECURE FOR PRODUCTION!"
                 )
                 encryption_key = Fernet.generate_key().decode()
-                logger.warning(f"Generated key: {encryption_key}")
-                logger.warning(
-                    "Add this to your .env file: AI_ENCRYPTION_KEY={encryption_key}"
-                )
 
             # Ensure key is bytes
             if isinstance(encryption_key, str):
