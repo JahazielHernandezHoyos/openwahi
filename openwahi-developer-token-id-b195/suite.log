@@ -1,0 +1,176 @@
+============================= test session starts ==============================
+platform linux -- Python 3.14.4, pytest-9.0.3, pluggy-1.6.0
+rootdir: /tmp/r/backend
+configfile: pyproject.toml
+plugins: timeout-2.4.0, cov-7.0.0, asyncio-1.3.0, langsmith-0.8.18, anyio-4.12.1
+timeout: 30.0s
+timeout method: signal
+timeout func_only: False
+asyncio: mode=Mode.AUTO, debug=False, asyncio_default_fixture_loop_scope=session, asyncio_default_test_loop_scope=session
+collected 219 items
+
+tests/test_admin.py ............                                         [  5%]
+tests/test_ai_assistant.py .......                                       [  8%]
+tests/test_audio_transcription.py .................                      [ 16%]
+tests/test_auth.py .....                                                 [ 18%]
+tests/test_backend_critical.py ............                              [ 24%]
+tests/test_core.py ......                                                [ 26%]
+tests/test_csrf_protection.py ...                                        [ 28%]
+tests/test_developer.py ..........                                       [ 32%]
+tests/test_developer_webhook_signature.py ..                             [ 33%]
+tests/test_encryption.py .                                               [ 34%]
+tests/test_items.py ...............                                      [ 41%]
+tests/test_knowledge_base.py ........                                    [ 44%]
+tests/test_llamacpp_provider.py .........                                [ 48%]
+tests/test_managed_key.py .......                                        [ 52%]
+tests/test_managed_provider.py ........                                  [ 55%]
+tests/test_provider_chain.py ..........                                  [ 60%]
+tests/test_response_naturalizer.py .................................     [ 75%]
+tests/test_usage_tracker.py ............                                 [ 80%]
+tests/test_vector_store.py ..                                            [ 81%]
+tests/test_webhook_tool_encryption.py .....                              [ 84%]
+tests/test_webhook_url_validation.py ......                              [ 86%]
+tests/test_whatsapp.py ..........                                        [ 91%]
+tests/test_whatsapp_phone_validation.py .........                        [ 95%]
+tests/test_widget.py ..........                                          [100%]
+
+=============================== warnings summary ===============================
+app/modules/knowledge_base/models.py:263
+  /tmp/r/backend/tests/../tests/../app/modules/knowledge_base/models.py:263: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    class KnowledgeBaseResponse(BaseModel):
+
+app/modules/knowledge_base/models.py:285
+  /tmp/r/backend/tests/../tests/../app/modules/knowledge_base/models.py:285: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    class DocumentResponse(BaseModel):
+
+app/modules/knowledge_base/models.py:346
+  /tmp/r/backend/tests/../tests/../app/modules/knowledge_base/models.py:346: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    class ChunkResponse(BaseModel):
+
+../../../opt/hermes/.venv/lib/python3.14/site-packages/langchain_core/_api/deprecation.py:25
+  /opt/hermes/.venv/lib/python3.14/site-packages/langchain_core/_api/deprecation.py:25: UserWarning: Core Pydantic V1 functionality isn't compatible with Python 3.14 or greater.
+    from pydantic.v1.fields import FieldInfo as FieldInfoV1
+
+app/modules/subscriptions/models.py:45
+  /tmp/r/backend/tests/../tests/../app/modules/subscriptions/models.py:45: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    class SubscriptionResponse(BaseModel):
+
+app/modules/ai_assistant/models.py:376
+  /tmp/r/backend/tests/../tests/../app/modules/ai_assistant/models.py:376: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    class AIConfigResponse(BaseModel):
+
+app/modules/ai_assistant/models.py:425
+  /tmp/r/backend/tests/../tests/../app/modules/ai_assistant/models.py:425: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    class AIMessageResponse(BaseModel):
+
+app/modules/ai_assistant/models.py:440
+  /tmp/r/backend/tests/../tests/../app/modules/ai_assistant/models.py:440: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    class AIConversationResponse(BaseModel):
+
+app/modules/whatsapp/models.py:101
+  /tmp/r/backend/tests/../tests/../app/modules/whatsapp/models.py:101: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    class DeviceResponse(BaseModel):
+
+app/modules/whatsapp/models.py:154
+  /tmp/r/backend/tests/../tests/../app/modules/whatsapp/models.py:154: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    class MessageResponse(BaseModel):
+
+app/modules/widget/models.py:153
+  /tmp/r/backend/tests/../tests/../app/modules/widget/models.py:153: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    class WidgetTokenResponse(BaseModel):
+
+app/modules/widget/models.py:190
+  /tmp/r/backend/tests/../tests/../app/modules/widget/models.py:190: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    class WidgetMessageResponse(BaseModel):
+
+app/modules/widget/models.py:202
+  /tmp/r/backend/tests/../tests/../app/modules/widget/models.py:202: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    class WidgetHistoryResponse(BaseModel):
+
+tests/test_admin.py::TestGetAdminUser::test_admin_user_allowed
+  /tmp/r/backend/tests/../tests/../app/modules/items/models.py:43: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    class ItemResponse(BaseModel):
+
+tests/test_ai_assistant.py::test_list_providers
+  /tmp/r/backend/tests/../tests/../app/modules/auth/models.py:7: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    class User(BaseModel):
+
+tests/test_ai_assistant.py::test_list_providers
+  /tmp/r/backend/tests/../tests/../app/modules/auth/models.py:19: PydanticDeprecatedSince20: Support for class-based `config` is deprecated, use ConfigDict instead. Deprecated in Pydantic V2.0 to be removed in V3.0. See Pydantic V2 Migration Guide at https://errors.pydantic.dev/2.12/migration/
+    class UserResponse(BaseModel):
+
+tests/test_ai_assistant.py::test_list_providers
+tests/test_ai_assistant.py::test_list_providers
+tests/test_ai_assistant.py::test_list_providers
+tests/test_ai_assistant.py::test_list_providers
+  /opt/hermes/.venv/lib/python3.14/site-packages/slowapi/extension.py:717: DeprecationWarning: 'asyncio.iscoroutinefunction' is deprecated and slated for removal in Python 3.16; use inspect.iscoroutinefunction() instead
+    if asyncio.iscoroutinefunction(func):
+
+tests/test_ai_assistant.py: 5 warnings
+tests/test_auth.py: 2 warnings
+tests/test_backend_critical.py: 6 warnings
+tests/test_developer.py: 4 warnings
+tests/test_items.py: 7 warnings
+tests/test_knowledge_base.py: 3 warnings
+tests/test_whatsapp.py: 3 warnings
+  /tmp/r/backend/tests/../tests/../app/exceptions/handlers.py:20: DeprecationWarning: sentry_sdk.push_scope is deprecated and will be removed in the next major version. Please consult our migration guide to learn how to migrate to the new API: https://docs.sentry.io/platforms/python/migration/1.x-to-2.x#scope-pushing
+    with sentry_sdk.push_scope() as scope:
+
+tests/test_audio_transcription.py::test_audio_payload_sets_correct_type_and_media_url
+tests/test_audio_transcription.py::test_ptt_payload_sets_correct_type
+tests/test_audio_transcription.py::test_codec_suffix_preserved_as_part_of_audio_filename
+tests/test_audio_transcription.py::test_audio_transcribed_when_ai_config_active
+tests/test_audio_transcription.py::test_audio_skips_ai_when_no_active_config
+tests/test_audio_transcription.py::test_audio_skips_ai_when_transcription_empty
+tests/test_audio_transcription.py::test_audio_exception_during_transcription_does_not_fail_webhook
+tests/test_audio_transcription.py::test_outgoing_audio_not_transcribed
+  /tmp/r/backend/tests/test_audio_transcription.py:70: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    "timestamp": datetime.utcnow().isoformat() + "Z",
+
+tests/test_audio_transcription.py: 10 warnings
+  /tmp/r/backend/tests/../tests/../app/modules/whatsapp/service.py:779: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    timestamp = datetime.utcnow()
+
+tests/test_audio_transcription.py::test_audio_transcribed_when_ai_config_active
+  /tmp/r/backend/tests/../tests/../app/modules/whatsapp/service.py:1000: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    timestamp=datetime.utcnow(),
+
+tests/test_audio_transcription.py::test_text_message_not_treated_as_audio
+  /tmp/r/backend/tests/test_audio_transcription.py:385: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    "timestamp": datetime.utcnow().isoformat() + "Z",
+
+tests/test_audio_transcription.py::test_webhook_endpoint_returns_200_for_audio_payload
+  /tmp/r/backend/tests/test_audio_transcription.py:561: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    "timestamp": datetime.utcnow().isoformat() + "Z",
+
+tests/test_developer.py::test_delete_token_malformed_id
+tests/test_items.py::test_create_item_missing_title
+tests/test_knowledge_base.py::test_create_knowledge_base_missing_name
+tests/test_whatsapp.py::test_chat_messages_requires_device_id
+  /tmp/r/backend/tests/../tests/../app/exceptions/handlers.py:41: DeprecationWarning: sentry_sdk.push_scope is deprecated and will be removed in the next major version. Please consult our migration guide to learn how to migrate to the new API: https://docs.sentry.io/platforms/python/migration/1.x-to-2.x#scope-pushing
+    with sentry_sdk.push_scope() as scope:
+
+tests/test_developer.py::test_delete_token_malformed_id
+tests/test_items.py::test_create_item_missing_title
+tests/test_knowledge_base.py::test_create_knowledge_base_missing_name
+tests/test_whatsapp.py::test_chat_messages_requires_device_id
+  /opt/hermes/.venv/lib/python3.14/site-packages/starlette/_exception_handler.py:59: StarletteDeprecationWarning: 'HTTP_422_UNPROCESSABLE_ENTITY' is deprecated. Use 'HTTP_422_UNPROCESSABLE_CONTENT' instead.
+    response = await handler(conn, exc)  # type: ignore[arg-type]
+
+tests/test_items.py: 27 warnings
+  /opt/hermes/.venv/lib/python3.14/site-packages/sqlalchemy/sql/schema.py:3624: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    return util.wrap_callable(lambda ctx: fn(), fn)  # type: ignore
+
+tests/test_usage_tracker.py::test_record_usage_does_not_raise_on_db_error
+  /tmp/r/backend/tests/../tests/../app/modules/ai_assistant/usage_tracker.py:84: RuntimeWarning: coroutine 'AsyncMockMixin._execute_mock_call' was never awaited
+    db.add(record)
+  Enable tracemalloc to get traceback where the object was allocated.
+  See https://docs.pytest.org/en/stable/how-to/capture-warnings.html#resource-warnings for more info.
+
+tests/test_whatsapp.py::test_list_devices_empty
+  /tmp/r/backend/tests/../tests/../app/modules/whatsapp/service.py:202: DeprecationWarning: datetime.datetime.utcnow() is deprecated and scheduled for removal in a future version. Use timezone-aware objects to represent datetimes in UTC: datetime.datetime.now(datetime.UTC).
+    now = datetime.utcnow()
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+====================== 219 passed, 108 warnings in 10.66s ======================
+All checks passed!

@@ -1,0 +1,9 @@
+{"version":3,"term":{"cols":120,"rows":42},"timestamp":1790449932,"command":"orb-proof prepare orb/developer-token-id"}
+[0.165, "o", "\u001b[1m━━━ 1 · Qué cambió el orb · orb/developer-token-id ━━━\u001b[0m\r\n\r\n"]
+[0.002, "o", "  03fe2dc refactor(developer): drop unused token_bytes call\r\n  5211972 fix(developer): return 422 for malformed token id\r\n"]
+[0.000, "o", "\r\n"]
+[0.001, "o", "   backend/app/modules/developer/router.py  | 4 +++-\r\n   backend/app/modules/developer/service.py | 6 ++----\r\n   backend/tests/test_developer.py          | 6 ++++++\r\n   3 files changed, 11 insertions(+), 5 deletions(-)\r\n"]
+[0.000, "o", "\r\n"]
+[0.000, "o", "\u001b[1mTests que prueban el cambio:\u001b[0m\r\n"]
+[0.001, "o", "  backend/tests/test_developer.py\r\n"]
+[0.000, "x", "0"]
