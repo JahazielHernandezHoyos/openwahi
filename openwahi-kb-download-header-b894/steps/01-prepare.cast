@@ -1,0 +1,9 @@
+{"version":3,"term":{"cols":120,"rows":42},"timestamp":1790449004,"command":"orb-proof prepare orb/kb-download-header"}
+[0.289, "o", "\u001b[1m━━━ 1 · Qué cambió el orb · orb/kb-download-header ━━━\u001b[0m\r\n\r\n"]
+[0.002, "o", "  3991b00 test(knowledge-base): cover safe download filenames and generic 500 detail\r\n  4a8a8f7 fix(knowledge-base): send RFC 6266 Content-Disposition on document download\r\n"]
+[0.000, "o", "\r\n"]
+[0.001, "o", "   backend/app/modules/knowledge_base/router.py | 27 ++++++++--\r\n   backend/tests/test_knowledge_base.py         | 80 ++++++++++++++++++++++++++++\r\n   2 files changed, 103 insertions(+), 4 deletions(-)\r\n"]
+[0.000, "o", "\r\n"]
+[0.000, "o", "\u001b[1mTests que prueban el cambio:\u001b[0m\r\n"]
+[0.001, "o", "  backend/tests/test_knowledge_base.py\r\n"]
+[0.001, "x", "0"]
