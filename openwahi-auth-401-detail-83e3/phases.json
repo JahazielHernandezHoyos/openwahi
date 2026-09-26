@@ -1,0 +1,10 @@
+{
+  "mode": "tests",
+  "check": "",
+  "tests": [
+    "backend/tests/test_security_firebase_errors.py"
+  ],
+  "before": 1,
+  "after": 0,
+  "suite": 0
+}

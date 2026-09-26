@@ -1,0 +1,7 @@
+{"version":3,"term":{"cols":120,"rows":42},"timestamp":1790452780,"command":"orb-proof verdict"}
+[0.001, "o", "\u001b[1m━━━ 5 · Veredicto ━━━\u001b[0m\r\n\r\n"]
+[0.003, "o", "  prueba en main (sin el cambio)               \u001b[32mfalla ✔\u001b[0m\r\n"]
+[0.001, "o", "  prueba en la rama                            \u001b[32mpasa ✔\u001b[0m\r\n"]
+[0.000, "o", "  suite completa + lint en la rama             \u001b[32mOK ✔\u001b[0m\r\n\r\n"]
+[0.002, "o", "\u001b[2m(el veredicto final lo decide el host con estos valores)\u001b[0m\r\n"]
+[0.000, "x", "0"]

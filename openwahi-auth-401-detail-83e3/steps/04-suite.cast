@@ -1,0 +1,7 @@
+{"version":3,"term":{"cols":120,"rows":42},"timestamp":1790452767,"command":"orb-proof suite"}
+[0.002, "o", "\u001b[1m━━━ 4 · Suite completa sobre la rama del orb ━━━\u001b[0m\r\n\r\n"]
+[0.112, "o", "\u001b[2m$ cd backend && uv sync -q --extra test --extra lint && uv run pytest tests -q -p no:cacheprovider && git diff --name-only --diff-filter=d origin/main...HEAD -- '*.py' | sed 's#^backend/##' | grep -v '^\\.\\./' | xargs -r uv run ruff check\u001b[0m\r\n\r\n"]
+[11.229, "o", "====================== 226 passed, 109 warnings in 9.56s =======================\r\n"]
+[1.361, "o", "All checks passed!\r\n"]
+[0.003, "o", "\r\n\u001b[32m\u001b[1m✔ Suite y lint OK\u001b[0m\r\n"]
+[0.001, "x", "0"]
