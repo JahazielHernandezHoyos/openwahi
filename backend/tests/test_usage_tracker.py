@@ -1,10 +1,11 @@
 """
 Tests para usage_tracker.py
 """
-import pytest
 from decimal import Decimal
 from unittest.mock import AsyncMock, MagicMock, patch
 from uuid import uuid4
+
+import pytest
 
 from app.modules.ai_assistant.usage_tracker import (
     _calculate_cost,
@@ -14,7 +15,6 @@ from app.modules.ai_assistant.usage_tracker import (
     record_usage,
 )
 from app.modules.subscriptions.models import Plan
-
 
 # =============================================================================
 # Tests para _calculate_cost

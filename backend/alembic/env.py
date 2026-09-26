@@ -23,6 +23,7 @@ from app.modules.ai_assistant.models import (  # noqa: F401
     WhatsAppAIConversationDB,
     WhatsAppAIMessageDB,
 )
+from app.modules.developer.models import ApiTokenDB, WebhookConfigDB  # noqa: F401
 from app.modules.items.models import ItemDB  # noqa: F401
 from app.modules.knowledge_base.models import (  # noqa: F401
     DocumentChunkDB,
@@ -30,7 +31,6 @@ from app.modules.knowledge_base.models import (  # noqa: F401
     KnowledgeDocumentDB,
     KnowledgeQueryLogDB,
 )
-from app.modules.developer.models import ApiTokenDB, WebhookConfigDB  # noqa: F401
 from app.modules.subscriptions.models import UserSubscriptionDB  # noqa: F401
 from app.modules.whatsapp.models import WhatsAppDeviceDB, WhatsAppMessageDB  # noqa: F401
 from app.modules.widget.models import (  # noqa: F401

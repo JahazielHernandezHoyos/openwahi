@@ -760,6 +760,7 @@ NO inventes información.
 
             # 7. Determinar si usuario es Pro y elegir key/proveedor
             from app.modules.subscriptions.service import get_or_create_subscription
+
             from .usage_tracker import check_conversation_limit
 
             subscription = await get_or_create_subscription(db, config.user_id)

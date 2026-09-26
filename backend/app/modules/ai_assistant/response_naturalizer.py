@@ -12,8 +12,8 @@ Mejoras adicionales (issue #20):
   6. Lenguaje formal/corporativo ("Procederé a", "Me permito informarle que")
 """
 
-import re
 import logging
+import re
 
 logger = logging.getLogger(__name__)
 
