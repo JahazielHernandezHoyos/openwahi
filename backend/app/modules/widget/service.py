@@ -26,10 +26,10 @@ from app.modules.ai_assistant.rate_limit_handler import (
 from app.modules.ai_assistant.service import _get_agentic_rag_context
 
 from .models import (
+    WidgetConfigResponse,
     WidgetConversationDB,
     WidgetMessageDB,
     WidgetTokenDB,
-    WidgetConfigResponse,
 )
 
 logger = logging.getLogger(__name__)
@@ -200,8 +200,17 @@ class WidgetService:
             return None
 
         # Domain restriction check
-        if token.allowed_origins and origin:
-            allowed = [o.strip() for o in token.allowed_origins.split(",")]
+        if token.allowed_origins:
+            # A token restricted to specific domains must not be usable when the
+            # request carries no Origin at all (curl, server-side scripts).
+            if not origin:
+                logger.warning(
+                    f"Widget token {token.id} rejected request without Origin. "
+                    f"Allowed: {token.allowed_origins}"
+                )
+                return None
+
+            allowed = [o.strip().rstrip("/") for o in token.allowed_origins.split(",")]
             origin_clean = origin.rstrip("/")
             if origin_clean not in allowed:
                 logger.warning(
