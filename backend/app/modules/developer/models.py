@@ -3,8 +3,9 @@
 import uuid
 from datetime import datetime
 from typing import Optional
+from urllib.parse import urlparse
 
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, field_validator
 from sqlalchemy import (
     Boolean,
     Column,
@@ -107,6 +108,15 @@ class WebhookConfigCreate(BaseModel):
     url: str = Field(..., min_length=1, max_length=2048, description="Webhook URL")
     secret: Optional[str] = Field(None, description="Optional secret for HMAC signing")
     is_active: bool = Field(True, description="Whether webhook is active")
+
+    @field_validator("url")
+    @classmethod
+    def validate_url(cls, value: str) -> str:
+        """Only accept absolute http(s) URLs that carry a host."""
+        parsed = urlparse(value)
+        if parsed.scheme not in ("http", "https") or not parsed.hostname:
+            raise ValueError("URL must be an absolute http(s) URL with a host")
+        return value
 
 
 class WebhookConfigResponse(BaseModel):
