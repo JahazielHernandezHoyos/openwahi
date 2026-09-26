@@ -14,9 +14,22 @@ from sqlalchemy.ext.asyncio import AsyncSession
 from app.config.database import get_db
 from app.core.dependencies import get_current_user_id
 
+from .encryption import encrypt_api_key
+
 logger = logging.getLogger(__name__)
 
 router = APIRouter(prefix="/webhook-tools", tags=["Webhook Tools"])
+
+
+def _encrypt_auth_value(auth_value: str | None) -> str | None:
+    """Encrypt a webhook auth value for storage.
+
+    Empty values map to NULL so a missing/cleared credential is never stored
+    as an encrypted empty string.
+    """
+    if not auth_value:
+        return None
+    return encrypt_api_key(auth_value)
 
 
 class WebhookToolConfigCreate(BaseModel):
@@ -157,7 +170,7 @@ async def create_webhook_tool(
                 "headers": json.dumps(config.headers),
                 "input_schema": json.dumps(config.input_schema),
                 "auth_type": config.auth_type,
-                "auth_value": config.auth_value,  # TODO: Encrypt
+                "auth_value": _encrypt_auth_value(config.auth_value),
                 "timeout_seconds": config.timeout_seconds,
                 "max_retries": config.max_retries,
                 "is_enabled": config.is_enabled,
@@ -238,7 +251,7 @@ async def update_webhook_tool(
 
         if config.auth_value is not None:
             updates.append("auth_value_encrypted = :auth_value")
-            params["auth_value"] = config.auth_value  # TODO: Encrypt
+            params["auth_value"] = _encrypt_auth_value(config.auth_value)
 
         if config.timeout_seconds is not None:
             updates.append("timeout_seconds = :timeout_seconds")
