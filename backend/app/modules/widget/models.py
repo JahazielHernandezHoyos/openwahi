@@ -17,7 +17,6 @@ from sqlalchemy.sql import func
 
 from app.config.database import Base
 
-
 # ==================== SQLAlchemy Models ====================
 
 

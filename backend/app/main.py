@@ -21,6 +21,7 @@ from app.exceptions.handlers import (
     http_exception_handler,
     validation_exception_handler,
 )
+from app.modules.admin.router import router as admin_router
 from app.modules.ai_assistant.router import router as ai_assistant_router
 from app.modules.ai_assistant.webhook_config_router import (
     router as webhook_tools_router,
@@ -31,7 +32,6 @@ from app.modules.items.router import router as items_router
 from app.modules.knowledge_base.router import router as knowledge_base_router
 from app.modules.subscriptions.router import router as subscriptions_router
 from app.modules.whatsapp.router import router as whatsapp_router
-from app.modules.admin.router import router as admin_router
 from app.modules.widget.router import auth_router as widget_auth_router
 from app.modules.widget.router import public_router as widget_public_router
 

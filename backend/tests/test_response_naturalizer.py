@@ -12,7 +12,6 @@ from app.modules.ai_assistant.response_naturalizer import (
     strip_heavy_markdown,
 )
 
-
 # ─────────────────────────────────────────────────────────────
 # clean_raw_tool_calls
 # ─────────────────────────────────────────────────────────────
@@ -280,8 +279,9 @@ class TestNaturalizePipeline:
         assert "claro" in result.lower()
 
     def test_emoji_limit_applied(self):
-        from app.modules.ai_assistant.response_naturalizer import naturalize
         import re
+
+        from app.modules.ai_assistant.response_naturalizer import naturalize
         text = "🚀🎉👏🙏👌 Tu orden está lista!"
         result = naturalize(text, max_emojis=2)
         emojis = re.findall(r'[\U0001F000-\U0001FFFF\u2600-\u27BF]', result)

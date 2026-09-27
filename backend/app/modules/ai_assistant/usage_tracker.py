@@ -6,7 +6,7 @@ Usado por el Admin Dashboard (issue #19) y el guard de límite mensual.
 from __future__ import annotations
 
 import logging
-from datetime import datetime, timezone
+from datetime import UTC, datetime, timezone
 from decimal import Decimal
 from typing import Optional
 from uuid import UUID
@@ -152,7 +152,7 @@ async def check_conversation_limit(
     if plan != Plan.pro:
         return True, -1  # free y enterprise: sin límite managed
 
-    now = datetime.now(timezone.utc)
+    now = datetime.now(UTC)
     count = await get_monthly_conversation_count(db, user_id, now.year, now.month)
     limit = settings.PRO_MONTHLY_CONVERSATION_LIMIT
     remaining = max(0, limit - count)
