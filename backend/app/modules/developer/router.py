@@ -1,5 +1,7 @@
 """API routes for developer portal - API tokens and webhook management."""
 
+from uuid import UUID
+
 from fastapi import APIRouter, Depends, HTTPException, status
 from sqlalchemy.ext.asyncio import AsyncSession
 
@@ -60,7 +62,7 @@ async def list_tokens(
     description="Revoke (delete) an API token.",
 )
 async def revoke_token(
-    token_id: str,
+    token_id: UUID,
     user_id: str = Depends(get_current_user_id),
     db: AsyncSession = Depends(get_db),
 ) -> None:

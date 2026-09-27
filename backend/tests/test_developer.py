@@ -64,6 +64,12 @@ async def test_delete_token_not_found(client):
     assert resp.status_code == 404
 
 
+async def test_delete_token_malformed_id(client):
+    """DELETE /developer/tokens/{id} returns 422 for a malformed UUID."""
+    resp = await client.delete("/developer/tokens/not-a-uuid")
+    assert resp.status_code == 422
+
+
 # ---------------------------------------------------------------------------
 # Webhook Config
 # ---------------------------------------------------------------------------
